@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fight the dragon</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<style type="text/css" media="screen">
+
+		
+	</style>
+		
+	
+</head>
+<body>
+
+<div id="game-wrapper">
+	<div class="text-center"><img src="http://orig13.deviantart.net/2df0/f/2013/099/a/d/dragon_flame_by_t_nil-d60zoco.png" name="dragonImage"></div>
+	<div id="message" class="text-center">You have encountered a terrifying dragon. Do you fight?</div>
+	<div class="text-center">
+		<button class="btn btn-default" onclick="rollDice();">Fight!</button>
+	</div>
+	<div id="hero-health" class="text-center">Hero:10 Health</div>
+	<div id="dragon-health" class="text-center">Dragon:10 Health</div>
+	<div class="text-center">
+		<img src="dragon-assets/d1.gif" name="die1Image">
+		<img src="dragon-assets/d2.gif" name="die2Image">
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	
+	var health = 10;
+	function rollDice() {
+		// console.log
+		// get a random number between 1 and 6
+		var randomDie1 = Math.ceil(Math.random() * 6);
+		var randomDie2 = Math.ceil(Math.random() * 6);
+		var die1 = "dragon-assets/d" + randomDie1 + ".gif";
+		var die2 = "dragon-assets/d" + randomDie2 + ".gif";
+		document.images.die1Image.src = die1;
+		document.images.die2Image.src = die2;
+
+		if(randomDie1 + randomDie2 > 8){
+			document.images.dragonImage.src = "https://s-media-cache-ak0.pinimg.com/736x/9c/86/3c/9c863c8728b424e22314f15d036fa2e0.jpg";
+			document.getElementById('message').innerHTML = "You have defeated the dragon!";
+		}else{
+			document.images.dragonImage.src ="https://rlv.zcache.com/sometimes_the_dragon_wins_green_tile-rfd848dfcb51746a1a829a756b4ff5a6e_agtbm_8byvr_324.jpg";
+			document.getElementById('message').innerHTML = "You are toast";
+		}
+	}
+</script>
+
+</body>
+</html>
